@@ -16,4 +16,6 @@ public interface TodoService {
     TodoListEntity getTodoListById(Integer id);
 
     List<TodoItemEntity> getAllItemsWithStatusById(Integer id, Boolean status);
+
+    void deleteAll();
 }

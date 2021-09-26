@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class TodoServiceImpl implements TodoService {
@@ -63,5 +62,11 @@ public class TodoServiceImpl implements TodoService {
         // Über Query-Annotations (Wie HQL)
         List<TodoItemEntity> todoItemEntityList2 = todoItemRepository.findByQueryAnnotation(id, status);
         return todoItemEntityList2;
+    }
+
+    @Override
+    public void deleteAll() {
+        todoItemRepository.deleteAll();
+        todoListRepository.deleteAll();
     }
 }

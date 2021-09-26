@@ -42,17 +42,20 @@ public class TodoEndpoint {
     }
 
     @GetMapping("/todolists/{id}/{status}")
-    public ResponseEntity<List<TodoItemEntity>> getAllItemsWithStatusById(@PathVariable(name = "id") Integer id, @PathVariable(name = "status") Boolean status) {
+    public ResponseEntity<List<TodoItemEntity>> getAllItemsByIdAndStatus(@PathVariable(name = "id") Integer id, @PathVariable(name = "status") Boolean status) {
         List<TodoItemEntity> result = todoService.getAllItemsWithStatusById(id, status);
         return ResponseEntity.ok(result);
     }
 
-    /**
+    @GetMapping("/todolists/{id}/query")
+    public ResponseEntity<List<TodoItemEntity>> getAllItemsByIdAndStatusQuery(@PathVariable(name = "id") Integer id, @RequestParam(name = "status") Boolean status) {
+        List<TodoItemEntity> result = todoService.getAllItemsWithStatusById(id, status);
+        return ResponseEntity.ok(result);
+    }
 
-    @DeleteMapping("/todolist")
-    public ResponseEntity<Void> deleteToDoList() {
-        todoService.deleteTodoItems();
+    @DeleteMapping("/todolists")
+    public ResponseEntity<Void> deleteAll() {
+        todoService.deleteAll();
         return ResponseEntity.noContent().build();
     }
-    */
 }
