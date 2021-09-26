@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class TodoItemEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "bezeichnung")
